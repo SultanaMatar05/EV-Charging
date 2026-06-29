@@ -3,28 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  .logout-btn{
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#00d4ff,#004aad);
+}
+
+/* الحاوية */
+.container{
+    text-align:center;
+    background:rgba(255,255,255,0.12);
+    padding:50px 40px;
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease;
+    width:320px;
+}
+
+/* العنوان */
+h1{
+    color:white;
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+/* أيقونة */
+.icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+/* نص صغير */
+p{
+    color:#e6f7ff;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+/* زر تسجيل الخروج */
+.logout-btn{
     width:100%;
     padding:14px;
     border:none;
-    border-radius:25px;
+    border-radius:30px;
     background:#00d4ff;
     color:#000;
     font-size:16px;
-    font-weight:bold;
+    font-weight:600;
     cursor:pointer;
-    transition:.3s;
+    transition:0.3s;
 }
 
+.logout-btn:hover{
+    background:#00aacc;
+    transform:scale(1.05);
+}
+
+/* أنيميشن */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 </style>
+
 </head>
+
 <body>
 
-<h1>Welcome to EV Charging System</h1>
+<div class="container">
 
-<button onclick="location.href='home.html'">
-Logout
-</button>
+    <div class="icon">⚡</div>
+
+    <h1>EV Charging System</h1>
+
+    <p>Welcome back! Manage your charging stations easily.</p>
+
+    <button class="logout-btn" onclick="location.href='login.html'">
+        Logout
+    </button>
+
+</div>
+
 </body>
 </html>
