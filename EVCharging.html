@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EV Charging</title>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to bottom,#000,#031722,#072c3d);
+    padding:20px;
+}
+
+.container{
+    width:360px;
+    background:#08141d;
+    border-radius:30px;
+    padding:30px 25px;
+    box-shadow:0 0 25px rgba(0,200,255,.2);
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    margin:auto;
+    margin-bottom:20px;
+    border-radius:50%;
+    background:#0b2433;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    color:#00d4ff;
+}
+
+h2{
+    color:#fff;
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.welcome{
+    text-align:center;
+    color:#b9c9d4;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.input-box{
+    display:flex;
+    align-items:center;
+    background:#102330;
+    border-radius:15px;
+    padding:14px;
+    margin-bottom:15px;
+}
+
+.input-box i{
+    color:#57d8ff;
+}
+
+.input-box input{
+    flex:1;
+    margin-left:10px;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:#fff;
+    font-size:15px;
+}
+
+#eye{
+    cursor:pointer;
+    color:white;
+}
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    color:white;
+    font-size:13px;
+}
+
+.options a{
+    color:#39d6ff;
+    text-decoration:none;
+}
+
+.login-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:25px;
+    background:#00d4ff;
+    color:#000;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    transform:scale(1.03);
+}
+
+.line{
+    margin:25px 0;
+    text-align:center;
+    color:#9cb4c3;
+    position:relative;
+}
+
+.line::before{
+    content:"";
+    position:absolute;
+    width:40%;
+    height:1px;
+    background:#29404d;
+    left:0;
+    top:50%;
+}
+
+.line::after{
+    content:"";
+    position:absolute;
+    width:40%;
+    height:1px;
+    background:#29404d;
+    right:0;
+    top:50%;
+}
+
+.google,
+.facebook{
+    width:100%;
+    border:none;
+    border-radius:18px;
+    padding:13px;
+    margin-top:12px;
+    background:#112531;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.google:hover,
+.facebook:hover{
+    background:#183646;
+}
+
+.google i{
+    color:red;
+    margin-right:8px;
+}
+
+.facebook i{
+    color:#1877f2;
+    margin-right:8px;
+}
+
+.create{
+    margin-top:25px;
+    text-align:center;
+    color:white;
+    font-size:14px;
+}
+
+.create a{
+    color:#00d4ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="logo">
+
+<i class="fa-solid fa-bolt"></i>
+
+</div>
+
+<h2>Log In</h2>
+
+<p class="welcome">
+Welcome back! Please login.
+</p>
+
+<form>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+placeholder="Email"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+required>
+
+<span id="eye">
+
+<i class="fa-solid fa-eye"></i>
+
+</span>
+
+</div>
+
+<div class="options">
+
+<label>
+
+<input type="checkbox">
+
+Remember Me
+
+</label>
+
+<a href="#">
+Forgot Password?
+</a>
+
+</div>
+<button type="submit" class="login-btn">
+    Log In
+</button>
+
+<div class="line">
+
+<span>OR</span>
+
+</div>
+
+<button
+type="button"
+class="google">
+
+<i class="fa-brands fa-google"></i>
+
+Continue with Google
+
+</button>
+
+<button
+type="button"
+class="facebook">
+
+<i class="fa-brands fa-facebook"></i>
+
+Continue with Facebook
+
+</button>
+
+<p class="create">
+
+Don't have an account?
+
+<a href="CreateAccount.html">
+
+Create Account
+
+</a>
+
+</p>
+
+</form>
+
+</div>
+
+<script>
+// عناصر الصفحة
+const password = document.getElementById("password");
+const eye = document.getElementById("eye");
+const form = document.querySelector("form");
+
+// إظهار وإخفاء كلمة المرور
+eye.addEventListener("click", function () {
+
+    if (password.type === "password") {
+        password.type = "text";
+        eye.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+    } else {
+        password.type = "password";
+        eye.innerHTML = '<i class="fa-solid fa-eye"></i>';
+    }
+
+});
+
+// عند الضغط على Login
+form.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const email = document.querySelector('input[type="email"]').value;
+    const pass = password.value;
+
+    if (email === "" || pass === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    // الانتقال إلى الصفحة الرئيسية
+    window.location.href = "CreateAccount.html";
+
+});
+</script>
+</body>
+
+</html>

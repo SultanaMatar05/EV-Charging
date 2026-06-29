@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CreateAccount</title>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to bottom,#000000,#031722,#0a3143);
+    padding:20px;
+}
+
+.container{
+    width:360px;
+    background:#08141d;
+    padding:30px;
+    border-radius:30px;
+    box-shadow:0 0 25px rgba(0,200,255,.25);
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    margin:auto;
+    margin-bottom:20px;
+    border-radius:50%;
+    background:#0b2433;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#00d4ff;
+    font-size:35px;
+}
+
+h2{
+    color:#fff;
+    text-align:center;
+    margin-bottom:8px;
+}
+
+p{
+    color:#bfcbd3;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.input-box{
+    display:flex;
+    align-items:center;
+    background:#112531;
+    padding:14px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.input-box i{
+    color:#00d4ff;
+    margin-right:10px;
+}
+
+.input-box input{
+    width:100%;
+    background:none;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:15px;
+}
+
+.input-box input::placeholder{
+    color:#b8c6cf;
+}
+
+.register-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:25px;
+    background:#00d4ff;
+    color:#000;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.register-btn:hover{
+    transform:scale(1.03);
+}
+
+.login-link{
+    margin-top:20px;
+    text-align:center;
+    color:white;
+}
+
+.login-link a{
+    color:#00d4ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+@media(max-width:400px){
+
+.container{
+    width:100%;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<h2>Create Account</h2>
+
+<p>Create your new account</p>
+
+<form id="registerForm">
+
+<div class="input-box">
+<i class="fa-solid fa-user"></i>
+<input type="text" id="name" placeholder="Full Name">
+</div>
+
+<div class="input-box">
+<i class="fa-solid fa-envelope"></i>
+<input type="email" id="email" placeholder="Email">
+</div>
+
+<div class="input-box">
+<i class="fa-solid fa-phone"></i>
+<input type="tel" id="phone" placeholder="Phone Number">
+</div>
+
+<div class="input-box">
+<i class="fa-solid fa-lock"></i>
+<input type="password" id="password" placeholder="Password">
+</div>
+
+<div class="input-box">
+<i class="fa-solid fa-lock"></i>
+<input type="password" id="confirm" placeholder="Confirm Password">
+</div>
+
+<button type="submit" class="register-btn">
+Create Account
+</button>
+
+<p class="login-link">
+
+Already have an account?
+
+<a href="EV Charging.html">
+Log In
+</a>
+
+</p>
+
+</form>
+
+</div>
+
+<script>
+// استدعاء النموذج
+const form = document.getElementById("registerForm");
+
+form.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm").value;
+
+    // التحقق من تعبئة جميع الحقول
+    if (name === "" || email === "" || phone === "" || password === "" || confirm === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    // التحقق من تطابق كلمة المرور
+    if (password !== confirm) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    // التحقق من طول كلمة المرور
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return;
+    }
+
+    // إذا كان كل شيء صحيحًا
+    alert("Account created successfully!");
+
+    // الانتقال إلى صفحة OTP
+    window.location.href =
+    "OTPVerification.html";
+
+});
+</script>
+
+</body>
+</html>

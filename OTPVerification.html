@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OTP Verification</title>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to bottom,#000,#031722,#0a3143);
+    padding:20px;
+}
+
+.container{
+    width:360px;
+    background:#08141d;
+    padding:30px;
+    border-radius:30px;
+    box-shadow:0 0 25px rgba(0,200,255,.25);
+    text-align:center;
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:#0b2433;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    color:#00d4ff;
+}
+
+h2{
+    color:white;
+    margin-bottom:10px;
+}
+
+p{
+    color:#bfcbd3;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.otp-box{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.otp{
+    width:60px;
+    height:60px;
+    border:none;
+    border-radius:15px;
+    background:#112531;
+    color:white;
+    font-size:24px;
+    text-align:center;
+    outline:none;
+}
+
+.otp:focus{
+    border:2px solid #00d4ff;
+}
+
+#verifyBtn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:25px;
+    background:#00d4ff;
+    color:black;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#verifyBtn:hover{
+    transform:scale(1.03);
+}
+
+.resend{
+    margin-top:20px;
+    color:white;
+}
+
+.resend a{
+    color:#00d4ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+@media(max-width:400px){
+
+.container{
+    width:100%;
+}
+
+.otp{
+    width:50px;
+    height:50px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<h2>OTP Verification</h2>
+
+<p>
+Enter the 4-digit code sent to your email.
+</p>
+
+<div class="otp-box">
+
+<input type="text" maxlength="1" class="otp">
+<input type="text" maxlength="1" class="otp">
+<input type="text" maxlength="1" class="otp">
+<input type="text" maxlength="1" class="otp">
+
+</div>
+
+<button id="verifyBtn">
+
+Verify
+
+</button>
+
+<p class="resend">
+
+Didn't receive the code?
+
+<a href="#">
+
+Resend
+
+</a>
+
+</p>
+
+</div>
+
+<script>
+// جميع خانات OTP
+const otpInputs = document.querySelectorAll(".otp");
+
+// زر التحقق
+const verifyBtn = document.getElementById("verifyBtn");
+
+// التنقل بين الخانات
+otpInputs.forEach((input, index) => {
+
+    input.addEventListener("input", function () {
+
+        // يسمح بالأرقام فقط
+        this.value = this.value.replace(/[^0-9]/g, "");
+
+        // الانتقال للخانة التالية
+        if (this.value !== "" && index < otpInputs.length - 1) {
+            otpInputs[index + 1].focus();
+        }
+
+    });
+
+    // الرجوع عند الضغط على Backspace
+    input.addEventListener("keydown", function (e) {
+
+        if (e.key === "Backspace" && this.value === "" && index > 0) {
+            otpInputs[index - 1].focus();
+        }
+
+    });
+
+});
+
+// زر Verify
+verifyBtn.addEventListener("click", function () {
+
+    let code = "";
+
+    otpInputs.forEach(input => {
+        code += input.value;
+    });
+
+    if (code.length !== 4) {
+        alert("Please enter the 4-digit OTP.");
+        return;
+    }
+
+    alert("Verification Successful!");
+
+    // الانتقال إلى الصفحة الرئيسية
+    window.location.href = "index.html";
+
+});
+</script>
+</body>
+
+</html>
